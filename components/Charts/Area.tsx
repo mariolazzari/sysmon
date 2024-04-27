@@ -8,7 +8,7 @@ const Chart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-export function Area({ title = "", series = [], height = 400 }: AreaProps) {
+export function Area({ title = "", series = [], height = 300 }: AreaProps) {
   const options = {
     chart: {
       type: "area",
@@ -23,12 +23,11 @@ export function Area({ title = "", series = [], height = 400 }: AreaProps) {
         enabled: false,
       },
     },
-
     dataLabels: {
       enabled: false,
     },
     stroke: {
-      curve: "smooth",
+      curve: "straight",
     },
     title: {
       text: title,
@@ -41,7 +40,7 @@ export function Area({ title = "", series = [], height = 400 }: AreaProps) {
       max: 100,
       min: 0,
       labels: {
-        formatter: val => val.toFixed(0),
+        formatter: val => val.toFixed(1) + "%",
       },
     },
     legend: {

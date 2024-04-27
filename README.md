@@ -11,6 +11,6 @@ npm run tauri build
 
 ## Links
 
-System Information official [sito](https://systeminformation.io)
-Tauri official [site](https://tauri.app)
-NextJS official [site](https://nextjs.org/)
+- System Information official [sito](https://systeminformation.io)
+- Tauri official [site](https://tauri.app)
+- NextJS official [site](https://nextjs.org/)

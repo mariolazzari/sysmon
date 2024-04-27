@@ -3,11 +3,11 @@
 import { errorHandler } from "@/lib/error";
 import si from "systeminformation";
 
-export async function getCurrentLoaad() {
+export async function getMem() {
   try {
-    const load = await si.currentLoad();
+    const mem = await si.mem();
 
-    return load;
+    return mem;
   } catch (ex) {
     throw errorHandler(ex);
   }
