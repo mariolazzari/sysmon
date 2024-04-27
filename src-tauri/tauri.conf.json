@@ -29,8 +29,8 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
-      "longDescription": "",
+      "identifier": "it.mariolzzari.sysmon",
+      "longDescription": "System Monitor by Mario Lazzari",
       "macOS": {
         "entitlements": null,
         "exceptionDomain": "",
