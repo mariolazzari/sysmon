@@ -36,6 +36,9 @@ export function CpuChart() {
         { name: "Current Load System", data: sysSeries },
         { name: "Current Load User", data: usrSeries },
       ]}
+      yMin={0}
+      yMax={100}
+      yFormatter={val => val.toFixed(1) + "%"}
     />
   );
 }

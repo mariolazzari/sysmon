@@ -8,7 +8,14 @@ const Chart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
 
-export function Area({ title = "", series = [], height = 300 }: AreaProps) {
+export function Area({
+  title = "",
+  series = [],
+  height = 300,
+  yMax,
+  yMin,
+  yFormatter,
+}: AreaProps) {
   const options = {
     chart: {
       type: "area",
@@ -37,10 +44,10 @@ export function Area({ title = "", series = [], height = 300 }: AreaProps) {
       type: "datetime",
     },
     yaxis: {
-      max: 100,
-      min: 0,
+      max: yMax,
+      min: yMin,
       labels: {
-        formatter: val => val.toFixed(1) + "%",
+        formatter: yFormatter,
       },
     },
     legend: {

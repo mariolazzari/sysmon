@@ -36,6 +36,9 @@ export function MemChart() {
         { name: "Active", data: actSeries },
         { name: "Available", data: avbSeries },
       ]}
+      yMin={0}
+      yMax={100}
+      yFormatter={val => val.toFixed(1) + "%"}
     />
   );
 }

@@ -1,4 +1,5 @@
 import { CpuChart } from "@/components/Cpu";
+import { DiskChart } from "@/components/Disk/DiskChart";
 import { MemChart } from "@/components/Mem";
 
 function HomePage() {
@@ -10,6 +11,10 @@ function HomePage() {
 
       <div className="w-full md:w-1/2">
         <MemChart />
+      </div>
+
+      <div className="w-full md:w-1/2">
+        <DiskChart />
       </div>
     </main>
   );
