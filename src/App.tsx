@@ -1,25 +1,35 @@
-import { useState, useEffect } from "react";
-import "./App.css";
-import { MemoryInfo, memoryInfo } from "tauri-plugin-system-info-api";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Mem } from "./components/Mem";
+import { Cpu } from "./components/Cpu";
+import { components } from "tauri-plugin-system-info-api";
 
 function App() {
-  const [memInfo, setMemInfo] = useState<MemoryInfo | undefined>(undefined);
+  const tabTriggers = [
+    { key: "cpu", label: "Cpu" },
+    { key: "mem", label: "Memory" },
+  ];
 
-  const test = async () => {
-    const mem = await memoryInfo();
-    setMemInfo(mem);
-  };
-
-  useEffect(() => {
-    test();
-  }, []);
+  const tabContents = [
+    { key: "cpu", component: <Cpu /> },
+    { key: "mem", component: <Mem /> },
+  ];
 
   return (
-    <div className="container p-8">
-      <h1 className="text-red-600 text-3xl">Welcome to Tauri!</h1>
+    <Tabs defaultValue="cpu" className="w-[400px]">
+      <TabsList>
+        {tabTriggers.map(({ key, label }) => (
+          <TabsTrigger key={key} value={key}>
+            {label}
+          </TabsTrigger>
+        ))}
+      </TabsList>
 
-      <p>{memInfo?.total_memory}</p>
-    </div>
+      {tabContents.map(({ key, component }) => (
+        <TabsContent key={key} value={key}>
+          {component}
+        </TabsContent>
+      ))}
+    </Tabs>
   );
 }
 
