@@ -1,7 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Mem } from "./components/Mem";
 import { Cpu } from "./components/Cpu";
-import { components } from "tauri-plugin-system-info-api";
 
 function App() {
   const tabTriggers = [
