@@ -1,11 +1,13 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Mem } from "./components/Mem";
 import { Cpu } from "./components/Cpu";
+import { ThemeToggle } from "./components/ThemeToggle";
 
 function App() {
   const tabTriggers = [
     { key: "cpu", label: "Cpu" },
     { key: "mem", label: "Memory" },
+    { key: "all", label: "All" },
   ];
 
   const tabContents = [
@@ -14,13 +16,14 @@ function App() {
   ];
 
   return (
-    <Tabs defaultValue="cpu" className="w-[400px]">
+    <Tabs defaultValue="cpu" className="w-full text-center h-[50px]">
       <TabsList>
         {tabTriggers.map(({ key, label }) => (
           <TabsTrigger key={key} value={key}>
             {label}
           </TabsTrigger>
         ))}
+        <ThemeToggle />
       </TabsList>
 
       {tabContents.map(({ key, component }) => (

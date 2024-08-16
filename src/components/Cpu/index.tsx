@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CpuInfo, cpuInfo } from "tauri-plugin-system-info-api";
+import { CpuInfo, cpuInfo, refreshCpu } from "tauri-plugin-system-info-api";
 import { useInterval } from "usehooks-ts";
 import { Laoding } from "../Loading";
 
@@ -8,6 +8,7 @@ export function Cpu() {
 
   // cpu info
   useInterval(async () => {
+    await refreshCpu();
     const cpu = await cpuInfo();
     setCpu(cpu);
   }, 1000);
@@ -16,5 +17,13 @@ export function Cpu() {
     return <Laoding />;
   }
 
-  return <div>{cpu?.cpu_count}</div>;
+  return (
+    <div className="flex flex-wrap gap-4">
+      <p>
+        {cpu.cpus.map(cpu => (
+          <div>{cpu.cpu_usage}</div>
+        ))}
+      </p>
+    </div>
+  );
 }
