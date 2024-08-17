@@ -5,12 +5,17 @@ import { Laoding } from "../Loading";
 
 export function Cpu() {
   const [cpu, setCpu] = useState<CpuInfo | undefined>(undefined);
+  const [avg, setAvg] = useState(0);
 
   // cpu info
   useInterval(async () => {
     await refreshCpu();
     const cpu = await cpuInfo();
     setCpu(cpu);
+
+    let avg: number = 0;
+    cpu.cpus.forEach(cpu => (avg += cpu.cpu_usage));
+    setAvg(avg / cpu.cpu_count);
   }, 1000);
 
   if (!cpu) {
@@ -19,11 +24,11 @@ export function Cpu() {
 
   return (
     <div className="flex flex-wrap gap-4">
-      <p>
-        {cpu.cpus.map(cpu => (
-          <div>{cpu.cpu_usage}</div>
-        ))}
-      </p>
+      {cpu.cpus.map((cpu, key) => (
+        <h6 key={`cpu${key}`}>{cpu.cpu_usage.toFixed(2)}</h6>
+      ))}
+
+      <h6>{avg.toFixed(2)}</h6>
     </div>
   );
 }
